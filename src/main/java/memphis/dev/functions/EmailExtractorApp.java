@@ -23,7 +23,7 @@ public class EmailExtractorApp {
 
         final StreamsBuilder builder = new StreamsBuilder();
 
-        // Apply the custom flattening logic using JsonFlatteningMapper
+        // Apply the custom email extract logic using EmailExtractor
         builder.stream("input", Consumed.with(Serdes.String(), Serdes.String()))
                 .mapValues(new EmailExtractor())
                 .to("output", Produced.with(Serdes.String(), Serdes.String()));
